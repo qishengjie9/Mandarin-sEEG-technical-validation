@@ -215,20 +215,16 @@ The bundled figures summarize aggregate decoding results from the current
 benchmark implementation and provide publication-layout examples. They do not
 contain raw recordings or trial-level predictions.
 
-![Within-participant decoding validation](examples/generated_figures/within_participant_validation.png)
+![Within-participant decoding validation](examples/generated_figures/Figure6.jpg)
 
-![Cross-participant decoding validation](examples/generated_figures/cross_participant_validation.png)
+![Cross-participant decoding validation](examples/generated_figures/Figure7.jpg)
 
 ## Controlled data access
 
 The dataset is not downloaded through this code repository. Public metadata,
 documentation, and code may be shared openly, while sEEG, speech audio, and
-linked participant information remain under controlled access. See
-[`docs/DATA_ACCESS_WORKFLOW.md`](docs/DATA_ACCESS_WORKFLOW.md) and the draft
-[`docs/DATA_USE_AGREEMENT_TEMPLATE.md`](docs/DATA_USE_AGREEMENT_TEMPLATE.md).
-
-The DUA is a template pending institutional approval. Repository maintainers
-must replace all bracketed fields before accepting applications.
+linked participant information remain under controlled access; see
+[https://github.com/qishengjie9/Mandarin-sEEG-technical-validation/blob/main/DATA_USE_AGREEMENT.pdf](https://github.com/qishengjie9/Mandarin-sEEG-technical-validation/blob/main/DATA_USE_AGREEMENT.pdf).
 
 ## Citation
 
