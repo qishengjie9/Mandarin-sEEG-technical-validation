@@ -198,10 +198,7 @@ python scripts/plot_cross_participant_validation.py \
   --output figures/cross_participant_validation
 ```
 
-Reference PNG and editable SVG outputs are included in
-`examples/generated_figures/`. Training outputs, checkpoints, predictions, and
-path manifests are ignored by default because they may contain participant-level
-results or local filesystem information.
+Reference figure outputs are included in `examples/generated_figures/`. 
 
 ### Example validation figures
 
@@ -218,7 +215,7 @@ contain raw recordings or trial-level predictions.
 The dataset is not downloaded through this code repository. Public metadata,
 documentation, and code may be shared openly, while sEEG, speech audio, and
 linked participant information remain under controlled access; see
-[https://github.com/qishengjie9/Mandarin-sEEG-technical-validation/blob/main/DATA_USE_AGREEMENT.pdf](https://github.com/qishengjie9/Mandarin-sEEG-technical-validation/blob/main/DATA_USE_AGREEMENT.pdf).
+DATA_USE_AGREEMENT.pdf.
 
 ## Citation
 
