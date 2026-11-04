@@ -16,24 +16,19 @@ coordinates, or trial-level annotations are included in this repository.
 
 ```text
 .
-|-- src/mandarin_seeg_validation/
-|   |-- time_frequency.py
-|   `-- acoustic_contamination.py
-|-- src/mandarin_seeg/            # decoding models and data pipeline
+|-- src/
+|   |-- mandarin_seeg_validation/ # time-frequency and contamination analyses
+|   `-- mandarin_seeg/            # decoding models and data pipeline
 |-- configs/                      # within- and cross-participant settings
 |-- scripts/                      # training, CV, and figure entry points
-|-- docs/
-|   |-- METHODS.md
-|   |-- DATA_ACCESS_WORKFLOW.md
-|   |-- DATA_USE_AGREEMENT_TEMPLATE.md
-|   `-- decoding/
-|       |-- DATA_INTERFACE.md
-|       `-- MODEL_CARD.md
 |-- examples/generated_figures/  # publication-style decoding examples
 |-- tests/
 |-- outputs/                      # ignored except for .gitkeep
+|-- DATA_USE_AGREEMENT.pdf        # controlled-access terms
 |-- pyproject.toml
-`-- requirements.txt
+|-- requirements.txt
+|-- requirements-dev.txt
+`-- README.md
 ```
 
 ## Installation
@@ -187,9 +182,8 @@ python scripts/run_cross_participant_cv.py \
 
 Balanced accuracy is the primary metric because class support may differ. All
 confusion matrices and ROC curves are generated from held-out predictions. See
-[`docs/decoding/DATA_INTERFACE.md`](docs/decoding/DATA_INTERFACE.md) and
-[`docs/decoding/MODEL_CARD.md`](docs/decoding/MODEL_CARD.md) for the complete
-data contract, architectures, intended use, and limitations.
+the files under [`configs/`](configs/) and [`src/mandarin_seeg/`](src/mandarin_seeg/)
+for the complete analysis settings and implementation.
 
 ## Recreate decoding figures
 
