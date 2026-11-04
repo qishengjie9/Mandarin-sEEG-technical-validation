@@ -1,0 +1,37 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+dist/
+build/
+.mypy_cache/
+
+# Restricted human data must never be committed.
+data/
+restricted_data/
+*.npy
+*.npz
+*.wav
+*.edf
+*.vhdr
+*.eeg
+*.set
+*.pt
+*.pth
+
+# Training outputs can contain local paths or derived participant-level data.
+checkpoints/
+cache/
+figures/
+*manifest*.csv
+best_predictions.npz
+history.json
+best_metrics.json
+last_metrics.json
+
+# Generated analyses are local by default.
+outputs/*
+!outputs/.gitkeep
+

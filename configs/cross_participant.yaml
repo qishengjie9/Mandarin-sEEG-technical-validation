@@ -1,0 +1,73 @@
+seed: 20260730
+data:
+  root: "./data/Mandarin_sEEG_BIDS"
+  subjects: [sub-01, sub-02, sub-04, sub-05, sub-06, sub-07, sub-08, sub-09, sub-10, sub-11, sub-12]
+  max_trials_per_subject: null
+  cache_items: 2048
+  disk_cache: "outputs/cache/cross_participant_preprocessed"
+preprocessing:
+  target_rate: 200
+  window_mode: "event_normalized"
+  window_start: -0.5
+  normalized_event_duration: 0.75
+  use_textgrid_onset_correction: false
+  enable_signal_qc: true
+  invalid_value_threshold: 1.0e20
+  min_valid_channels: 4
+  min_channel_valid_fraction: 0.98
+  min_channel_std: 1.0e-10
+  max_channel_rms_robust_z: 12.0
+  max_channel_invalid_fraction: 0.02
+  max_trial_invalid_fraction: 0.05
+  min_baseline_valid_fraction: 0.95
+  low_band: [0.5, 40.0]
+  high_gamma_band: [70.0, 150.0]
+  notch_frequencies: [50.0, 100.0, 150.0]
+  baseline: [-0.5, -0.1]
+split:
+  heldout_subjects: [sub-02, sub-08]
+  strict_unseen_stimulus: true
+  folds: 5
+  fold: 0
+  val_fraction: 0.1
+model:
+  name: "modular_phonology"
+  model_dim: 96
+  input_streams: 2
+  dropout: 0.30
+  channel_dropout: 0.20
+  projection_dim: 64
+  temporal:
+    name: "multiscale"
+    branch_width: 24
+    kernels: [7, 25, 51]
+    dilations: [1, 2, 4]
+  spatial:
+    name: "set_attention"
+    heads: 4
+    layers: 2
+  channel_pool:
+    name: "dynamic_set"
+  context:
+    name: "transformer"
+    heads: 4
+    layers: 2
+training:
+  epochs: 50
+  patience: 8
+  batch_size: 48
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  num_workers: 4
+  prefetch_factor: 2
+  persistent_workers: true
+  amp: true
+loss:
+  tone: 1.0
+  initial: 0.5
+  final: 0.5
+  contrastive: 0.1
+  domain: 0.1
+  max_grl_scale: 1.0
+output: "outputs/cross_participant/sub-02_sub-08/fold-00"

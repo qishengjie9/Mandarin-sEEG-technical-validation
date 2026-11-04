@@ -1,0 +1,50 @@
+seed: 20260728
+data:
+  root: "./data/Mandarin_sEEG_BIDS"
+  subject: "sub-01"
+  task: "character"
+  max_trials: null
+  cache_items: 2048
+preprocessing:
+  target_rate: 200
+  window_mode: "event_normalized"
+  window_start: -0.5
+  normalized_event_duration: 0.75
+  use_textgrid_onset_correction: false
+  enable_signal_qc: true
+  invalid_value_threshold: 1.0e20
+  min_valid_channels: 4
+  min_channel_valid_fraction: 0.98
+  min_channel_std: 1.0e-10
+  max_channel_rms_robust_z: 12.0
+  max_channel_invalid_fraction: 0.02
+  max_trial_invalid_fraction: 0.05
+  min_baseline_valid_fraction: 0.95
+  low_band: [0.5, 40.0]
+  high_gamma_band: [70.0, 150.0]
+  notch_frequencies: [50.0, 100.0, 150.0]
+  baseline: [-0.5, -0.1]
+model:
+  name: "stag"
+  branch_width: 16
+  model_dim: 64
+  graph_heads: 4
+  graph_top_k: 8
+  transformer_layers: 1
+  transformer_heads: 4
+  dropout: 0.50
+training:
+  split_strategy: "stimulus_grouped"
+  validation_fraction: 0.15
+  outer_folds: 5
+  fold: 0
+  epochs: 120
+  early_stopping: true
+  patience: 20
+  batch_size: 24
+  learning_rate: 0.0002
+  weight_decay: 0.001
+  num_workers: 0
+  grouped_batches: true
+  amp: true
+output: "outputs/within_participant/sub-01/stag/fold-00"

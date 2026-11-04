@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mandarin-seeg-analysis"
+version = "1.0.0"
+description = "Technical validation and Mandarin lexical-tone decoding for a controlled-access sEEG dataset"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "pandas>=2.1",
+  "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+decoding = [
+  "pyyaml>=6.0",
+  "scikit-learn>=1.3",
+  "torch>=2.1",
+  "tqdm>=4.66",
+]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+mandarin-seeg-time-frequency = "mandarin_seeg_validation.time_frequency:main"
+mandarin-seeg-acoustic-screen = "mandarin_seeg_validation.acoustic_contamination:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
